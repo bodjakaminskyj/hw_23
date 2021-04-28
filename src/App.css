@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+}
+.contact{
+  border: 4px double black;
+  display: flex;
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+.search-panel{
+  display: flex;
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+.search{
+  margin-left: 5%;
+  width: 64px;
+  margin-top: 10px;
+}
+nav img{
+  width: 25px;
+  margin-bottom: -12px;
+  margin-right: 10px;
+}
+.contacts{
+  margin-left: 10%;
+}
+nav{
+  margin: 25px;
+
+}
+.icon-gender{
+  width: 120px;
+  height: 120px;
+}
+.M, .F, .N{
+  font-size: 20pt;
+  margin-left: 25px;
+}
