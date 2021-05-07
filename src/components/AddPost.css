@@ -1,0 +1,39 @@
+.addPost{
+    position: relative;
+   max-width: 320px;
+   margin: 50px auto 0;
+   text-align: center;
+   font-family: 'Cormorant Garamond', serif;
+   padding: 10px 40px 0 40px;
+   background: lightslategrey;
+}
+.chooseUser select, .addText input, .addLink input {
+    height: 38px;
+    line-height: 38px;
+    padding: 0 10px;
+    background: #ffffff;
+    margin: 10px;
+    border: 1px solid #DDDDDD;
+    font-size: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    color: #808080;
+    outline: none;
+ 
+}
+.subBut button {
+    margin: 20px 0;
+    padding: 0 10px;
+    background: #222121;
+    color: #ffffff;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-width: 0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .2s linear
+ }
+ .subBut button:hover {
+    background: #C44D58;
+ }
+ 
+

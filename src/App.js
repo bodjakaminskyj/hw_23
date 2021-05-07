@@ -1,26 +1,29 @@
-import { useEffect } from 'react';
-import { connect } from 'react-redux';
 import './App.css';
-import List from './contents/List';
+import Post from './components/Post';
+import AddPost from './components/AddPost';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loadPosts } from "./store";
+import { useSelector } from "react-redux";
+
 
 function App() {
-  useEffect(
-    () => {
+  const dispatch = useDispatch();
+  const { usersData, postData } = useSelector((state) => state);
+  useEffect(() => {
+    dispatch(loadPosts());
+  }, [dispatch]);
 
-    },
-    [],
-  )
   return (
-    <div className="App">
-      <h1>Redux</h1>
-      
-      <List/>
-      
+    <div className="wall">
+      <AddPost/>
+      {postData.map((post, i) => 
+        <Post key={i}
+          postData={post}
+          user={usersData.find((user) => user.name === post.name)}
+        />)}
     </div>
   );
 }
-const mapDispatchToProps = {
-  
-}
 
-export default connect(null, mapDispatchToProps)(App);
+export default App;
