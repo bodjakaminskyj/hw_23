@@ -17,7 +17,7 @@ const AddPost = () => {
             name: user.name,
             date: new Date().toLocaleString("ua", { year: 'numeric', month: 'long', day: 'numeric' }),
             content: content,
-            linkToPhoto: linkToPhoto,
+            image: linkToPhoto,
             coment: Math.floor(Math.random() * 100),
             repost: Math.floor(Math.random() * 100),
             like: Math.floor(Math.random() * 100),
