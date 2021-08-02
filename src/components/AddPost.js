@@ -1,50 +1,42 @@
-import React, {useState} from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import {addPost} from '../store';
 import './AddPost.css'
+import {useForm} from "react-hook-form";
+import ButtonsResult from "./ButtonsResult";
 
 const AddPost = () => {
     const dispatch = useDispatch();
-
-    const { usersData} = useSelector((state) => state);
-    const [content, setContent] = useState();
-    const [linkToPhoto, setlinkToPhoto] = useState();
-    const [activeUserName, setActiveUserName] = useState('Anakin skywalker');
-
-    const submitPostData = () => {
-        const user = usersData.find((user) => user.name === activeUserName);
-        const post = {
-            name: user.name,
-            date: new Date().toLocaleString("ua", { year: 'numeric', month: 'long', day: 'numeric' }),
-            content: content,
-            image: linkToPhoto,
-            coment: Math.floor(Math.random() * 100),
-            repost: Math.floor(Math.random() * 100),
-            like: Math.floor(Math.random() * 100),
-        }
-        dispatch(addPost(post))
+    const {register, reset, handleSubmit} = useForm()
+    const submitPostData = data => {
+        dispatch(addPost(data))
+        reset(
+            {
+                name: '',
+                type: '',
+                color: '',
+                wheelSize: '',
+                price: '',
+                id: '',
+                description: ''
+            }
+        );
     }
 
     return(
-        <div className="addPost">
-            <div className="chooseUser">
-                <select onChange={(event) => ( setActiveUserName(event.target.value))}>   
-                {usersData.map((user) => 
-                    <option value={user.name} key={user.name}>{user.name} </option>
-                    )}
-                </select>
-            </div>
-            <div className="content">
-                <div className="addText">
-                    <input placeholder="Що у вас на думці" onChange={(event) =>  setContent(event.target.value)}/>
-                </div>
-                <div className="addLink">
-                    <input placeholder="Посилання на світлину" onChange={(event) =>  setlinkToPhoto(event.target.value)}/>
-                </div>
-            </div>
-            <div className="subBut">
-                <button onClick={submitPostData}>Опублікувати</button>
-            </div>
+        <div className="add-bike">
+            <form onSubmit={handleSubmit(submitPostData)}>
+                <input {...register("name", { required: true, maxLength: 20})} placeholder='Name'/>
+                <input {...register("type", { required: true, pattern: /^[A-Za-z]+$/i })} placeholder='Type'  />
+                <input {...register("color", { required: true, maxLength: 20})} placeholder='Color'/>
+                <input type="number" {...register("wheelSize", { min: 10, max: 31 })} placeholder='Wheel Size'/>
+                <input type='number' {...register("price", { required: true, pattern: /^[0-9.]+$/i })} placeholder='Price'  />
+                <input {...register("id", { required: true, pattern: /^[A-Za-z]+$/i })} placeholder='ID (slug): ХХХХХХХХХХХХХ'  />
+                <textarea id='description' {...register('description')}placeholder='Description'/>
+
+                <ButtonsResult {...{ reset }} />
+
+            </form>
         </div>
     )
 }

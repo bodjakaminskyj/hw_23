@@ -1,0 +1,15 @@
+button{
+    width: 320px;
+    height: 40px;
+    margin: 10px;
+    background: #696969;
+    border-radius: 5px;
+    font-family: Saira, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
